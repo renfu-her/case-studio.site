@@ -21,6 +21,10 @@ class ProjectResource extends Resource
 
     protected static ?string $navigationGroup = '內容管理';
 
+    protected static ?string $modelLabel = '專案';
+
+    protected static ?int $navigationSort = 1;
+
     public static function form(Form $form): Form
     {
         return $form

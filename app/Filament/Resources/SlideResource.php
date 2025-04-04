@@ -21,6 +21,10 @@ class SlideResource extends Resource
 
     protected static ?string $navigationGroup = '內容管理';
 
+    protected static ?string $modelLabel = '輪播圖';
+
+    protected static ?int $navigationSort = 2;
+
     public static function form(Form $form): Form
     {
         return $form

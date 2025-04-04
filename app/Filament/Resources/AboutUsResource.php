@@ -20,6 +20,11 @@ class AboutUsResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-information-circle';
 
     protected static ?string $navigationGroup = '內容管理';
+    protected static ?string $navigationLabel = '關於我們';
+
+    protected static ?string $modelLabel = '關於我們';
+
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {

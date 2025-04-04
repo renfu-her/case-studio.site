@@ -21,6 +21,10 @@ class ContactUsResource extends Resource
 
     protected static ?string $navigationGroup = '內容管理';
 
+    protected static ?string $modelLabel = '聯絡我們';
+
+    protected static ?int $navigationSort = 3;
+
     public static function form(Form $form): Form
     {
         return $form
