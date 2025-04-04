@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use Filament\Forms\Components\Section;
 
 class ProjectResource extends Resource
 {
@@ -33,9 +35,10 @@ class ProjectResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->label('標題'),
-                Forms\Components\RichEditor::make('description')
+                TinyEditor::make('description')
                     ->required()
                     ->columnSpanFull()
+                    ->minHeight(450)
                     ->label('描述'),
                 Forms\Components\TextInput::make('client')
                     ->maxLength(255)

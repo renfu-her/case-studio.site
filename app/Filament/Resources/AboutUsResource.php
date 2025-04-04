@@ -12,6 +12,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use Filament\Forms\Components\FileUpload;
 
 class AboutUsResource extends Resource
 {
@@ -34,13 +40,42 @@ class AboutUsResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->label('標題'),
-                Forms\Components\RichEditor::make('content')
+                TinyEditor::make('content')
                     ->required()
                     ->columnSpanFull()
+                    ->minHeight(450)
                     ->label('內容'),
-                Forms\Components\FileUpload::make('image')
+                FileUpload::make('image')
                     ->image()
+                    ->imageEditor()
                     ->directory('about-us')
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->downloadable()
+                    ->openable()
+                    ->getUploadedFileNameForStorageUsing(
+                        fn($file): string => (string) str(Str::uuid7() . '.webp')
+                    )
+                    ->saveUploadedFileUsing(function ($file) {
+                        $manager = new ImageManager(new Driver());
+                        $image = $manager->read($file);
+                        
+                        $image->resize(1024, null);
+                        $image->scaleDown(1024, null);
+
+                        $filename = Str::uuid7()->toString() . '.webp';
+
+                        if (!file_exists(storage_path('app/public/about-us'))) {
+                            mkdir(storage_path('app/public/about-us'), 0755, true);
+                        }
+
+                        $image->toWebp(80)->save(storage_path('app/public/about-us/' . $filename));
+                        return 'about-us/' . $filename;
+                    })
+                    ->deleteUploadedFileUsing(function ($file) {
+                        if ($file) {
+                            Storage::disk('public')->delete($file);
+                        }
+                    })
                     ->label('圖片'),
                 Forms\Components\Toggle::make('is_active')
                     ->label('啟用')
