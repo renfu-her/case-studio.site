@@ -41,8 +41,7 @@ class ProjectImagesRelationManager extends RelationManager
                         $manager = new ImageManager(new Driver());
                         $image = $manager->read($file);
                         
-                        $image->resize(1024, null);
-                        $image->scaleDown(1024, null);
+                        $image->scale(1024);
 
                         $filename = Str::uuid7()->toString() . '.webp';
 
