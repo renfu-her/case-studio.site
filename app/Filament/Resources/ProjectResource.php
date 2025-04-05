@@ -49,7 +49,10 @@ class ProjectResource extends Resource
                     ->dateFormat('Y-m-d')
                     ->allowInput()
                     ->altInput(true)
-                    ->altFormat('Y-m-d'),
+                    ->altFormat('Y-m-d')
+                    ->customConfig([
+                        'locale' => 'zh_tw',
+                    ]),
                 Forms\Components\TextInput::make('location')
                     ->maxLength(255)
                     ->label('地點'),
