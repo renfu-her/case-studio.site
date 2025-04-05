@@ -136,7 +136,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-success text-white py-6 mt-8">
+    <footer class="text-white py-6 mt-8" style="background-color: #EA580C;">
         <div class="container">
             <div class="row g-4">
                 <!-- 公司資訊 -->
@@ -173,16 +173,16 @@
                     <h5 class="text-white mb-4">快速連結</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2">
-                            <a href="{{ url('/') }}" class="nav-link p-0 text-white-75">首頁</a>
+                            <a href="{{ url('/') }}" class="nav-link p-0 text-white hover-underline">首頁</a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="{{ url('/projects') }}" class="nav-link p-0 text-white-75">案例</a>
+                            <a href="{{ url('/projects') }}" class="nav-link p-0 text-white hover-underline">案例</a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="{{ url('/about') }}" class="nav-link p-0 text-white-75">關於我們</a>
+                            <a href="{{ url('/about') }}" class="nav-link p-0 text-white hover-underline">關於我們</a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="{{ url('/contact') }}" class="nav-link p-0 text-white-75">聯絡我們</a>
+                            <a href="{{ url('/contact') }}" class="nav-link p-0 text-white hover-underline">聯絡我們</a>
                         </li>
                     </ul>
                 </div>
@@ -247,6 +247,29 @@
             </div>
         </div>
     </footer>
+
+    <style>
+    .hover-underline {
+        position: relative;
+        display: inline-block;
+    }
+    .hover-underline::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+    }
+    .hover-underline:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+    </style>
 
     <!-- Bootstrap JavaScript: Bundle with Popper -->
     <script src="{{ asset('assets/libraries/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
