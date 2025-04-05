@@ -32,7 +32,6 @@ class ServiceResource extends Resource
                 Forms\Components\TextInput::make('icon')
                     ->label('圖標')
                     ->required()
-                    ->helperText('請輸入 Font Awesome 6 的圖標代碼，例如：fa-solid fa-house')
                     ->placeholder('fa-solid fa-house')
                     ->suffixAction(
                         Forms\Components\Actions\Action::make('selectIcon')
@@ -42,12 +41,11 @@ class ServiceResource extends Resource
                     )
                     ->afterStateUpdated(function ($state, Forms\Components\TextInput $component) {
                         if ($state) {
-                            $component->helperText("<i class='{$state}'></i> {$state}");
+                            $component->helperText(new \Illuminate\Support\HtmlString("<i class='{$state}'></i> {$state}"));
                         }
                     })
                     ->dehydrateStateUsing(fn ($state) => str_replace(['fas ', 'far ', 'fab '], ['fa-solid ', 'fa-regular ', 'fa-brands '], $state))
-                    ->helperText(fn ($state) => $state ? "<i class='{$state}'></i> {$state}" : '請輸入 Font Awesome 6 的圖標代碼，例如：fa-solid fa-house')
-                    ->markdownHelperText(),
+                    ->helperText(fn ($state) => new \Illuminate\Support\HtmlString($state ? "<i class='{$state}'></i> {$state}" : '請輸入 Font Awesome 6 的圖標代碼，例如：fa-solid fa-house')),
 
                 Forms\Components\TextInput::make('title')
                     ->label('標題')
@@ -75,8 +73,8 @@ class ServiceResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('icon')
                     ->label('圖標')
-                    ->formatStateUsing(fn (string $state): string => "<i class='{$state}'></i>")
-                    ->html(),
+                    ->html()
+                    ->formatStateUsing(fn (string $state): string => "<i class='{$state}'></i>"),
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('標題')
