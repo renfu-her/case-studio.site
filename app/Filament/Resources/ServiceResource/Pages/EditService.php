@@ -22,4 +22,4 @@ class EditService extends EditRecord
         return $this->getResource()::getUrl('index');
     }
 }
-}
+

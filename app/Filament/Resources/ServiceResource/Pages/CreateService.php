@@ -15,4 +15,4 @@ class CreateService extends CreateRecord
         return $this->getResource()::getUrl('index');
     }
 }
-}
+
