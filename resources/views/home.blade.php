@@ -14,7 +14,7 @@
             </div>
             <div class="carousel-inner">
                 @foreach($slides as $key => $slide)
-                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" style="height: 800px;">
+                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" style="height: 600px;">
                         <img src="{{ Storage::url($slide->image) }}" 
                              class="d-block w-100 h-100 object-fit-cover" 
                              alt="{{ $slide->title }}">
@@ -64,7 +64,7 @@
         <div class="row g-4">
             @foreach($projects as $project)
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                    <div class="card h-100 border-0 shadow-sm">
+                    <div class="card h-100 border-0 shadow-sm hover-lift">
                         @if($project->images->isNotEmpty())
                             <img src="{{ Storage::url($project->images->first()->image) }}" 
                                  class="card-img-top" 
@@ -72,18 +72,35 @@
                                  style="height: 250px; object-fit: cover;">
                         @endif
                         <div class="card-body">
-                            <h3 class="card-title h5 mb-3">{{ $project->title }}</h3>
-                            <p class="card-text text-muted mb-3">{{ Str::limit($project->description, 100) }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="text-muted small">
-                                    <i class="bi bi-geo-alt me-1"></i> {{ $project->location }}
-                                </div>
-                                @if($project->url)
-                                    <a href="{{ $project->url }}" class="btn btn-outline-primary btn-sm" target="_blank">
-                                        查看詳情
-                                    </a>
+                            <h3 class="card-title h5 mb-2">{{ $project->title }}</h3>
+                            @if($project->sub_title)
+                                <p class="text-primary mb-3">{{ $project->sub_title }}</p>
+                            @endif
+                            <p class="card-text text-muted mb-4">{{ Str::limit(strip_tags($project->description), 150) }}</p>
+                            <div class="d-flex flex-column gap-2">
+                                @if($project->client)
+                                    <div class="text-muted small">
+                                        <i class="bi bi-building me-2"></i>{{ $project->client }}
+                                    </div>
+                                @endif
+                                @if($project->location)
+                                    <div class="text-muted small">
+                                        <i class="bi bi-geo-alt me-2"></i>{{ $project->location }}
+                                    </div>
+                                @endif
+                                @if($project->completion_date)
+                                    <div class="text-muted small">
+                                        <i class="bi bi-calendar-event me-2"></i>{{ \Carbon\Carbon::parse($project->completion_date)->format('Y-m-d') }}
+                                    </div>
                                 @endif
                             </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0 text-end">
+                            @if($project->url)
+                                <a href="{{ $project->url }}" class="btn btn-primary btn-sm" target="_blank">
+                                    <i class="bi bi-arrow-right-circle me-1"></i>查看詳情
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
