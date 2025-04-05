@@ -55,12 +55,12 @@
     </div>
 
     <!-- header top -->
-    <div class="py-4">
+    <div class="py-4" style="background-color: #EA580C;">
         <nav class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <a href="{{ url('/') }}" class="navbar-brand">
-                    @if($logo = \App\Models\Setting::get('site_logo'))
-                        <img src="{{ Storage::url($logo) }}" height="40" alt="{{ \App\Models\Setting::get('site_title', '網站標題') }}">
+                    @if(\App\Models\Setting::get('site_logo') != '')
+                        <img src="{{ Storage::url(\App\Models\Setting::get('site_logo')) }}" height="40" alt="{{ \App\Models\Setting::get('site_title', '網站標題') }}">
                     @endif
                 </a>
 
@@ -68,22 +68,22 @@
                 <div class="d-none d-lg-block">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">
+                            <a class="nav-link text-white hover-underline {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">
                                 首頁
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('projects*') ? 'active' : '' }}" href="{{ url('/projects') }}">
+                            <a class="nav-link text-white hover-underline {{ request()->is('projects*') ? 'active' : '' }}" href="{{ url('/projects') }}">
                                 案例
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('about*') ? 'active' : '' }}" href="{{ url('/about') }}">
+                            <a class="nav-link text-white hover-underline {{ request()->is('about*') ? 'active' : '' }}" href="{{ url('/about') }}">
                                 關於我們
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('contact*') ? 'active' : '' }}" href="{{ url('/contact') }}">
+                            <a class="nav-link text-white hover-underline {{ request()->is('contact*') ? 'active' : '' }}" href="{{ url('/contact') }}">
                                 聯絡我們
                             </a>
                         </li>
@@ -91,7 +91,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="btn btn-link d-lg-none p-0 text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                <button class="btn btn-link d-lg-none p-0 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="bi bi-list fs-1"></i>
                 </button>
             </div>
@@ -107,22 +107,22 @@
         <div class="offcanvas-body">
             <ul class="navbar-nav">
                 <li class="nav-item mb-3">
-                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }} fs-5" href="{{ url('/') }}">
+                    <a class="nav-link hover-underline {{ request()->is('/') ? 'active' : '' }} fs-5" href="{{ url('/') }}">
                         <i class="bi bi-house-door me-2"></i>首頁
                     </a>
                 </li>
                 <li class="nav-item mb-3">
-                    <a class="nav-link {{ request()->is('projects*') ? 'active' : '' }} fs-5" href="{{ url('/projects') }}">
+                    <a class="nav-link hover-underline {{ request()->is('projects*') ? 'active' : '' }} fs-5" href="{{ url('/projects') }}">
                         <i class="bi bi-grid me-2"></i>案例
                     </a>
                 </li>
                 <li class="nav-item mb-3">
-                    <a class="nav-link {{ request()->is('about*') ? 'active' : '' }} fs-5" href="{{ url('/about') }}">
+                    <a class="nav-link hover-underline {{ request()->is('about*') ? 'active' : '' }} fs-5" href="{{ url('/about') }}">
                         <i class="bi bi-info-circle me-2"></i>關於我們
                     </a>
                 </li>
                 <li class="nav-item mb-3">
-                    <a class="nav-link {{ request()->is('contact*') ? 'active' : '' }} fs-5" href="{{ url('/contact') }}">
+                    <a class="nav-link hover-underline {{ request()->is('contact*') ? 'active' : '' }} fs-5" href="{{ url('/contact') }}">
                         <i class="bi bi-envelope me-2"></i>聯絡我們
                     </a>
                 </li>
@@ -254,6 +254,13 @@
     .hover-underline:hover::after {
         transform: scaleX(1);
         transform-origin: bottom left;
+    }
+    .nav-link.active {
+        background-color: transparent !important;
+        border-bottom: 2px solid white;
+    }
+    .nav-link:hover {
+        background-color: transparent !important;
     }
     </style>
 
