@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use Filament\Forms\Components\Section;
+use Coolsam\FilamentFlatpickr\Forms\Components\Flatpickr;
 
 class ProjectResource extends Resource
 {
@@ -43,8 +44,12 @@ class ProjectResource extends Resource
                 Forms\Components\TextInput::make('client')
                     ->maxLength(255)
                     ->label('客戶'),
-                Forms\Components\DatePicker::make('completion_date')
-                    ->label('完成日期'),
+                Flatpickr::make('completion_date')
+                    ->label('完成日期')
+                    ->dateFormat('Y-m-d')
+                    ->allowInput()
+                    ->altInput(true)
+                    ->altFormat('Y-m-d'),
                 Forms\Components\TextInput::make('location')
                     ->maxLength(255)
                     ->label('地點'),
