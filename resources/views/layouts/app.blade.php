@@ -142,25 +142,25 @@
                 <!-- 公司資訊 -->
                 <div class="col-lg-5">
                     <div class="pe-lg-5">
-                        @if($logo = \App\Models\Setting::get('site_logo'))
-                            <img src="{{ Storage::url($logo) }}" height="40" alt="{{ \App\Models\Setting::get('site_title', '網站標題') }}" class="mb-4">
+                        @if(\App\Models\Setting::get('site_logo') != '')
+                            <img src="{{ Storage::url(\App\Models\Setting::get('site_logo')) }}" height="40" alt="{{ \App\Models\Setting::get('site_title', '網站標題') }}" class="mb-4">
                         @endif
                         <p class="text-white mb-4">
                             {{ \App\Models\Setting::get('meta_description', '') }}
                         </p>
                         <div class="d-flex gap-3">
-                            @if($facebook = \App\Models\Setting::get('social_facebook'))
-                                <a href="{{ $facebook }}" class="text-white hover-opacity" target="_blank">
+                            @if(\App\Models\Setting::get('social_facebook') != '')
+                                <a href="{{ \App\Models\Setting::get('social_facebook') }}" class="text-white hover-opacity" target="_blank">
                                     <i class="bi bi-facebook fs-5"></i>
                                 </a>
                             @endif
-                            @if($instagram = \App\Models\Setting::get('social_instagram'))
-                                <a href="{{ $instagram }}" class="text-white hover-opacity" target="_blank">
+                            @if(\App\Models\Setting::get('social_instagram') != '')
+                                <a href="{{ \App\Models\Setting::get('social_instagram') }}" class="text-white hover-opacity" target="_blank">
                                     <i class="bi bi-instagram fs-5"></i>
                                 </a>
                             @endif
-                            @if($linkedin = \App\Models\Setting::get('social_linkedin'))
-                                <a href="{{ $linkedin }}" class="text-white hover-opacity" target="_blank">
+                            @if(\App\Models\Setting::get('social_linkedin') != '')
+                                <a href="{{ \App\Models\Setting::get('social_linkedin') }}" class="text-white hover-opacity" target="_blank">
                                     <i class="bi bi-linkedin fs-5"></i>
                                 </a>
                             @endif
@@ -191,24 +191,24 @@
                 <div class="col-sm-6 col-lg-4">
                     <h5 class="text-white mb-4">聯絡資訊</h5>
                     <ul class="nav flex-column">
-                        @if($phone = \App\Models\Setting::get('contact_phone'))
+                        @if(\App\Models\Setting::get('contact_phone') != '')
                             <li class="nav-item mb-2">
-                                <a href="tel:{{ $phone }}" class="nav-link p-0 text-white-75">
-                                    <i class="bi bi-telephone me-2"></i>{{ $phone }}
+                                <a href="tel:{{ \App\Models\Setting::get('contact_phone') }}" class="nav-link p-0 text-white-75">
+                                    <i class="bi bi-telephone me-2"></i>{{ \App\Models\Setting::get('contact_phone') }}
                                 </a>
                             </li>
                         @endif
-                        @if($email = \App\Models\Setting::get('contact_email'))
+                        @if(\App\Models\Setting::get('contact_email') != '')
                             <li class="nav-item mb-2">
-                                <a href="mailto:{{ $email }}" class="nav-link p-0 text-white-75">
-                                    <i class="bi bi-envelope me-2"></i>{{ $email }}
+                                <a href="mailto:{{ \App\Models\Setting::get('contact_email') }}" class="nav-link p-0 text-white-75">
+                                    <i class="bi bi-envelope me-2"></i>{{ \App\Models\Setting::get('contact_email') }}
                                 </a>
                             </li>
                         @endif
-                        @if($address = \App\Models\Setting::get('contact_address'))
+                        @if(\App\Models\Setting::get('contact_address') != '')
                             <li class="nav-item mb-2">
                                 <span class="nav-link p-0 text-white-75">
-                                    <i class="bi bi-geo-alt me-2"></i>{{ $address }}
+                                    <i class="bi bi-geo-alt me-2"></i>{{ \App\Models\Setting::get('contact_address') }}
                                 </span>
                             </li>
                         @endif
