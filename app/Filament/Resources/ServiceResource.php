@@ -33,7 +33,21 @@ class ServiceResource extends Resource
                     ->label('圖標')
                     ->required()
                     ->helperText('請輸入 Font Awesome 6 的圖標代碼，例如：fa-solid fa-house')
-                    ->placeholder('fa-solid fa-house'),
+                    ->placeholder('fa-solid fa-house')
+                    ->suffixAction(
+                        Forms\Components\Actions\Action::make('selectIcon')
+                            ->label('選擇圖標')
+                            ->url('https://fontawesome.com/search?o=r&m=free', true)
+                            ->icon('heroicon-m-magnifying-glass')
+                    )
+                    ->afterStateUpdated(function ($state, Forms\Components\TextInput $component) {
+                        if ($state) {
+                            $component->helperText("<i class='{$state}'></i> {$state}");
+                        }
+                    })
+                    ->dehydrateStateUsing(fn ($state) => str_replace(['fas ', 'far ', 'fab '], ['fa-solid ', 'fa-regular ', 'fa-brands '], $state))
+                    ->helperText(fn ($state) => $state ? "<i class='{$state}'></i> {$state}" : '請輸入 Font Awesome 6 的圖標代碼，例如：fa-solid fa-house')
+                    ->markdownHelperText(),
 
                 Forms\Components\TextInput::make('title')
                     ->label('標題')
