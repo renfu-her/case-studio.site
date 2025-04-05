@@ -69,22 +69,22 @@
                 <div class="d-none d-lg-block">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link text-dark {{ request()->is('/') ? 'nav-active-dark' : '' }}" href="{{ url('/') }}">
+                            <a class="nav-link text-dark {{ request()->is('/') ? 'nav-active' : '' }}" href="{{ url('/') }}">
                                 首頁
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark {{ request()->is('projects*') ? 'nav-active-dark' : '' }}" href="{{ url('/projects') }}">
+                            <a class="nav-link text-dark {{ request()->is('projects*') ? 'nav-active' : '' }}" href="{{ url('/projects') }}">
                                 案例
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark {{ request()->is('about*') ? 'nav-active-dark' : '' }}" href="{{ url('/about') }}">
+                            <a class="nav-link text-dark {{ request()->is('about*') ? 'nav-active' : '' }}" href="{{ url('/about') }}">
                                 關於我們
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark {{ request()->is('contact*') ? 'nav-active-dark' : '' }}" href="{{ url('/contact') }}">
+                            <a class="nav-link text-dark {{ request()->is('contact*') ? 'nav-active' : '' }}" href="{{ url('/contact') }}">
                                 聯絡我們
                             </a>
                         </li>
@@ -108,22 +108,22 @@
         <div class="offcanvas-body">
             <ul class="navbar-nav">
                 <li class="nav-item mb-3">
-                    <a class="nav-link hover-underline {{ request()->is('/') ? 'active' : '' }} fs-5" href="{{ url('/') }}">
+                    <a class="nav-link {{ request()->is('/') ? 'nav-active' : '' }} fs-5" href="{{ url('/') }}">
                         <i class="bi bi-house-door me-2"></i>首頁
                     </a>
                 </li>
                 <li class="nav-item mb-3">
-                    <a class="nav-link hover-underline {{ request()->is('projects*') ? 'active' : '' }} fs-5" href="{{ url('/projects') }}">
+                    <a class="nav-link {{ request()->is('projects*') ? 'nav-active' : '' }} fs-5" href="{{ url('/projects') }}">
                         <i class="bi bi-grid me-2"></i>案例
                     </a>
                 </li>
                 <li class="nav-item mb-3">
-                    <a class="nav-link hover-underline {{ request()->is('about*') ? 'active' : '' }} fs-5" href="{{ url('/about') }}">
+                    <a class="nav-link {{ request()->is('about*') ? 'nav-active' : '' }} fs-5" href="{{ url('/about') }}">
                         <i class="bi bi-info-circle me-2"></i>關於我們
                     </a>
                 </li>
                 <li class="nav-item mb-3">
-                    <a class="nav-link hover-underline {{ request()->is('contact*') ? 'active' : '' }} fs-5" href="{{ url('/contact') }}">
+                    <a class="nav-link {{ request()->is('contact*') ? 'nav-active' : '' }} fs-5" href="{{ url('/contact') }}">
                         <i class="bi bi-envelope me-2"></i>聯絡我們
                     </a>
                 </li>
@@ -256,26 +256,23 @@
         transform: scaleX(1);
         transform-origin: bottom left;
     }
-    .nav-link.active {
-        background-color: transparent !important;
-        border-bottom: 2px solid white;
-    }
-    .nav-link:hover {
-        background-color: transparent !important;
-    }
     .nav-link {
         position: relative;
         transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
     }
     .nav-link:hover {
-        background-color: transparent !important;
-        opacity: 0.8;
+        background-color: rgba(234, 88, 12, 0.1) !important;
+        color: #EA580C !important;
     }
-    .nav-active-dark {
-        border-bottom: 2px solid #EA580C;
+    .nav-active {
+        background-color: #EA580C !important;
+        color: white !important;
     }
     .nav-link.active {
-        background-color: transparent !important;
+        background-color: #EA580C !important;
+        color: white !important;
     }
     </style>
 
