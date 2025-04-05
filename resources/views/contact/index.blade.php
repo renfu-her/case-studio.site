@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary px-5" 
+                            <button type="submit" class="btn btn-primary px-5 text-white" 
                                     style="background-color: #EA580C; border-color: #EA580C;">
                                 <i class="bi bi-send me-2"></i>送出訊息
                             </button>
