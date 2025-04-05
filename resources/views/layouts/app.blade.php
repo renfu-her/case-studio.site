@@ -140,7 +140,7 @@
         <div class="container">
             <div class="row g-4">
                 <!-- 公司資訊 -->
-                <div class="col-lg-4">
+                <div class="col-lg-5">
                     <div class="pe-lg-5">
                         @if($logo = \App\Models\Setting::get('site_logo'))
                             <img src="{{ Storage::url($logo) }}" height="40" alt="{{ \App\Models\Setting::get('site_title', '網站標題') }}" class="mb-4">
@@ -169,7 +169,7 @@
                 </div>
 
                 <!-- 快速連結 -->
-                <div class="col-sm-6 col-lg-2">
+                <div class="col-sm-6 col-lg-3">
                     <h5 class="text-white mb-4">快速連結</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2">
@@ -188,7 +188,7 @@
                 </div>
 
                 <!-- 聯絡資訊 -->
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-4">
                     <h5 class="text-white mb-4">聯絡資訊</h5>
                     <ul class="nav flex-column">
                         @if($phone = \App\Models\Setting::get('contact_phone'))
@@ -209,20 +209,6 @@
                             <li class="nav-item mb-2">
                                 <span class="nav-link p-0 text-white-75">
                                     <i class="bi bi-geo-alt me-2"></i>{{ $address }}
-                                </span>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-
-                <!-- 營業時間 -->
-                <div class="col-sm-6 col-lg-3">
-                    <h5 class="text-white mb-4">營業時間</h5>
-                    <ul class="nav flex-column">
-                        @if($business_hours = \App\Models\Setting::get('business_hours'))
-                            <li class="nav-item mb-2">
-                                <span class="nav-link p-0 text-white-75">
-                                    <i class="bi bi-clock me-2"></i>{{ $business_hours }}
                                 </span>
                             </li>
                         @endif
