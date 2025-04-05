@@ -56,7 +56,7 @@ class SlideResource extends Resource
                         $manager = new ImageManager(new Driver());
                         $image = $manager->read($file);
                         
-                        $image->scale(1096);
+                        $image->scale(2048);
 
                         $filename = Str::uuid7()->toString() . '.webp';
 

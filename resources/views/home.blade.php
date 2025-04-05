@@ -14,7 +14,7 @@
             </div>
             <div class="carousel-inner">
                 @foreach($slides as $key => $slide)
-                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" style="height: 600px;">
+                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" style="height: 800px;">
                         <img src="{{ Storage::url($slide->image) }}" 
                              class="d-block w-100 h-100 object-fit-cover" 
                              alt="{{ $slide->title }}">
