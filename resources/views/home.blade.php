@@ -69,11 +69,11 @@
             @foreach($services as $service)
                 <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                     <div class="card h-100 border-0 shadow-sm text-center hover-lift">
-                        <div class="card-body p-4">
-                            <div class="mb-3">
-                                <i class="{{ $service->icon }} fa-2x text-primary" style="color: #EA580C !important;"></i>
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center p-4" style="min-height: 250px;">
+                            <div class="mb-4">
+                                <i class="{{ $service->icon }} fa-3x text-primary" style="color: #EA580C !important;"></i>
                             </div>
-                            <h3 class="card-title h5 mb-2">{{ $service->title }}</h3>
+                            <h3 class="card-title h5 mb-3">{{ $service->title }}</h3>
                             @if($service->sub_title)
                                 <p class="card-text text-muted small mb-0">{{ $service->sub_title }}</p>
                             @endif
