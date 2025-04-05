@@ -78,6 +78,7 @@ class AboutUsResource extends Resource
                     ->label('圖片'),
                 Forms\Components\Toggle::make('is_active')
                     ->label('啟用')
+                    ->inline(false)
                     ->default(true),
             ]);
     }

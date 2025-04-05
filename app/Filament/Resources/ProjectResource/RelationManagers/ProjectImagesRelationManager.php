@@ -58,6 +58,7 @@ class ProjectImagesRelationManager extends RelationManager
                             Storage::disk('public')->delete($file);
                         }
                     })
+                    ->columnSpanFull()
                     ->label('圖片'),
                 Forms\Components\TextInput::make('title')
                     ->maxLength(255)

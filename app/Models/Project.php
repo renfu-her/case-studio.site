@@ -15,6 +15,7 @@ class Project extends Model
         'client',
         'completion_date',
         'location',
+        'url',
         'is_active',
         'sort_order'
     ];

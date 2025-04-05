@@ -48,8 +48,13 @@ class ProjectResource extends Resource
                 Forms\Components\TextInput::make('location')
                     ->maxLength(255)
                     ->label('地點'),
+                Forms\Components\TextInput::make('url')
+                    ->maxLength(255)
+                    ->label('網址')
+                    ->helperText('請輸入完整的網址，例如：https://example.com'),
                 Forms\Components\Toggle::make('is_active')
                     ->label('啟用')
+                    ->inline(false)
                     ->default(true),
                 Forms\Components\TextInput::make('sort_order')
                     ->numeric()

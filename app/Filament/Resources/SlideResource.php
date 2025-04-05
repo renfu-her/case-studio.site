@@ -81,6 +81,7 @@ class SlideResource extends Resource
                     ->label('連結'),
                 Forms\Components\Toggle::make('is_active')
                     ->label('啟用')
+                    ->inline(false)
                     ->default(true),
                 Forms\Components\TextInput::make('sort_order')
                     ->numeric()
