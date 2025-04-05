@@ -56,7 +56,7 @@
                     @if($project->description)
                         <div class="mb-4">
                             <h5 class="mb-3">專案描述</h5>
-                            <p class="text-muted">{{ $project->description }}</p>
+                            <div class="text-muted">{!! $project->description !!}</div>
                         </div>
                     @endif
 
