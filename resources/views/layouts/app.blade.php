@@ -135,6 +135,119 @@
         @yield('content')
     </main>
 
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-6 mt-8">
+        <div class="container">
+            <div class="row g-4">
+                <!-- 公司資訊 -->
+                <div class="col-lg-4">
+                    <div class="pe-lg-5">
+                        @if($logo = \App\Models\Setting::get('site_logo'))
+                            <img src="{{ Storage::url($logo) }}" height="40" alt="{{ \App\Models\Setting::get('site_title', '網站標題') }}" class="mb-4">
+                        @endif
+                        <p class="text-secondary mb-4">
+                            {{ \App\Models\Setting::get('meta_description', '') }}
+                        </p>
+                        <div class="d-flex gap-3">
+                            @if($facebook = \App\Models\Setting::get('social_facebook'))
+                                <a href="{{ $facebook }}" class="text-white" target="_blank">
+                                    <i class="bi bi-facebook fs-5"></i>
+                                </a>
+                            @endif
+                            @if($instagram = \App\Models\Setting::get('social_instagram'))
+                                <a href="{{ $instagram }}" class="text-white" target="_blank">
+                                    <i class="bi bi-instagram fs-5"></i>
+                                </a>
+                            @endif
+                            @if($linkedin = \App\Models\Setting::get('social_linkedin'))
+                                <a href="{{ $linkedin }}" class="text-white" target="_blank">
+                                    <i class="bi bi-linkedin fs-5"></i>
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快速連結 -->
+                <div class="col-sm-6 col-lg-2">
+                    <h5 class="text-white mb-4">快速連結</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="{{ url('/') }}" class="nav-link p-0 text-secondary">首頁</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="{{ url('/projects') }}" class="nav-link p-0 text-secondary">案例</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="{{ url('/about') }}" class="nav-link p-0 text-secondary">關於我們</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="{{ url('/contact') }}" class="nav-link p-0 text-secondary">聯絡我們</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 聯絡資訊 -->
+                <div class="col-sm-6 col-lg-3">
+                    <h5 class="text-white mb-4">聯絡資訊</h5>
+                    <ul class="nav flex-column">
+                        @if($phone = \App\Models\Setting::get('contact_phone'))
+                            <li class="nav-item mb-2">
+                                <a href="tel:{{ $phone }}" class="nav-link p-0 text-secondary">
+                                    <i class="bi bi-telephone me-2"></i>{{ $phone }}
+                                </a>
+                            </li>
+                        @endif
+                        @if($email = \App\Models\Setting::get('contact_email'))
+                            <li class="nav-item mb-2">
+                                <a href="mailto:{{ $email }}" class="nav-link p-0 text-secondary">
+                                    <i class="bi bi-envelope me-2"></i>{{ $email }}
+                                </a>
+                            </li>
+                        @endif
+                        @if($address = \App\Models\Setting::get('contact_address'))
+                            <li class="nav-item mb-2">
+                                <span class="nav-link p-0 text-secondary">
+                                    <i class="bi bi-geo-alt me-2"></i>{{ $address }}
+                                </span>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+
+                <!-- 營業時間 -->
+                <div class="col-sm-6 col-lg-3">
+                    <h5 class="text-white mb-4">營業時間</h5>
+                    <ul class="nav flex-column">
+                        @if($business_hours = \App\Models\Setting::get('business_hours'))
+                            <li class="nav-item mb-2">
+                                <span class="nav-link p-0 text-secondary">
+                                    <i class="bi bi-clock me-2"></i>{{ $business_hours }}
+                                </span>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 版權資訊 -->
+            <div class="border-top border-secondary pt-4 mt-5">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="text-secondary mb-0">
+                            © {{ date('Y') }} {{ \App\Models\Setting::get('site_title', '網站標題') }}. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                        <p class="text-secondary mb-0">
+                            Designed by <a href="#" class="text-secondary text-decoration-none">Case Studio</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Bootstrap JavaScript: Bundle with Popper -->
     <script src="{{ asset('assets/libraries/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/libraries/aos/aos.js') }}"></script>
