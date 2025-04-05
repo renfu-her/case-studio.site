@@ -59,7 +59,7 @@
         <div class="row justify-content-center text-center mb-5">
             <div class="col-lg-8">
                 <h2 class="h2 mb-3" data-aos="fade-up">
-                    <span class="pb-2" style="border-bottom: 3px solid #EA580C;">我們的服務</span>
+                    <span class="pb-2" style="border-bottom: 3px solid #EA580C;">服務</span>
                 </h2>
                 <p class="text-muted" data-aos="fade-up" data-aos-delay="100">專業的服務，為您提供最佳解決方案</p>
             </div>
@@ -86,14 +86,14 @@
 </section>
 
 <!-- Projects Section -->
-<section class="projects-section py-8 py-md-12 bg-light">
+<section class="projects-section py-6 bg-light">
     <div class="container">
-        <div class="row justify-content-center text-center mb-6">
+        <div class="row justify-content-center text-center mb-5">
             <div class="col-lg-8">
-                <h2 class="display-5 mb-4" data-aos="fade-up">
-                    <span class="pb-2" style="border-bottom: 3px solid #EA580C;">我們的專案</span>
+                <h2 class="h2 mb-3" data-aos="fade-up">
+                    <span class="pb-2" style="border-bottom: 3px solid #EA580C;">專案</span>
                 </h2>
-                <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">探索我們最新的作品和成功案例</p>
+                <p class="text-muted" data-aos="fade-up" data-aos-delay="100">探索我們最新的作品和成功案例</p>
             </div>
         </div>
 
@@ -105,17 +105,15 @@
                             <img src="{{ Storage::url($project->images->first()->image) }}" 
                                  class="card-img-top" 
                                  alt="{{ $project->title }}"
-                                 style="height: 250px; object-fit: cover;">
+                                 style="height: 200px; object-fit: cover;">
                         @endif
-                        <div class="card-body">
+                        <div class="card-body p-3">
                             <h3 class="card-title h5 mb-2">{{ $project->title }}</h3>
                             @if($project->sub_title)
-                                <p class="text-primary mb-3">{{ $project->sub_title }}</p>
+                                <p class="text-primary small mb-2">{{ $project->sub_title }}</p>
                             @endif
-                        </div>
-                        <div class="card-footer bg-transparent border-top-0 text-end">
                             @if($project->url)
-                                <a href="{{ $project->url }}" class="btn btn-primary text-white btn-sm" target="_blank" style="background-color: #EA580C; border-color: #EA580C;">
+                                <a href="{{ $project->url }}" class="btn btn-primary btn-sm text-white" target="_blank" style="background-color: #EA580C; border-color: #EA580C;">
                                     <i class="bi bi-arrow-right-circle me-1"></i>查看詳情
                                 </a>
                             @endif
