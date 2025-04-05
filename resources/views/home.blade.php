@@ -20,15 +20,17 @@
                              alt="{{ $slide->title }}">
                         <div class="carousel-caption d-flex align-items-center justify-content-center h-100">
                             <div class="text-center">
-                                <h1 class="display-4 text-white mb-4" data-aos="fade-up">{{ $slide->title }}</h1>
+                                <h1 class="display-4 text-white mb-4 text-shadow-lg" data-aos="fade-up" 
+                                    style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">{{ $slide->title }}</h1>
                                 @if($slide->description)
-                                    <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="100">
+                                    <p class="lead text-white mb-5 text-shadow" data-aos="fade-up" data-aos-delay="100"
+                                       style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);">
                                         {{ $slide->description }}
                                     </p>
                                 @endif
                                 @if($slide->link)
                                     <a href="{{ $slide->link }}" 
-                                       class="btn btn-outline-light btn-lg" 
+                                       class="btn btn-outline-light btn-lg shadow-sm" 
                                        data-aos="fade-up" 
                                        data-aos-delay="200">
                                         了解更多
