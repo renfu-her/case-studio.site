@@ -193,21 +193,21 @@
                     <ul class="nav flex-column">
                         @if(\App\Models\Setting::get('contact_phone') != '')
                             <li class="nav-item mb-2">
-                                <a href="tel:{{ \App\Models\Setting::get('contact_phone') }}" class="nav-link p-0 text-white-75">
+                                <a href="tel:{{ \App\Models\Setting::get('contact_phone') }}" class="nav-link p-0 text-white hover-underline">
                                     <i class="bi bi-telephone me-2"></i>{{ \App\Models\Setting::get('contact_phone') }}
                                 </a>
                             </li>
                         @endif
                         @if(\App\Models\Setting::get('contact_email') != '')
                             <li class="nav-item mb-2">
-                                <a href="mailto:{{ \App\Models\Setting::get('contact_email') }}" class="nav-link p-0 text-white-75">
+                                <a href="mailto:{{ \App\Models\Setting::get('contact_email') }}" class="nav-link p-0 text-white hover-underline">
                                     <i class="bi bi-envelope me-2"></i>{{ \App\Models\Setting::get('contact_email') }}
                                 </a>
                             </li>
                         @endif
                         @if(\App\Models\Setting::get('contact_address') != '')
                             <li class="nav-item mb-2">
-                                <span class="nav-link p-0 text-white-75">
+                                <span class="nav-link p-0 text-white">
                                     <i class="bi bi-geo-alt me-2"></i>{{ \App\Models\Setting::get('contact_address') }}
                                 </span>
                             </li>
