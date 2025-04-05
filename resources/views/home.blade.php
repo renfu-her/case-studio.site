@@ -58,7 +58,9 @@
     <div class="container">
         <div class="row justify-content-center text-center mb-6">
             <div class="col-lg-8">
-                <h2 class="display-5 mb-4" data-aos="fade-up">我們的專案</h2>
+                <h2 class="display-5 mb-4" data-aos="fade-up">
+                    <span class="pb-2" style="border-bottom: 3px solid #EA580C;">我們的專案</span>
+                </h2>
                 <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">探索我們最新的作品和成功案例</p>
             </div>
         </div>
@@ -81,7 +83,7 @@
                         </div>
                         <div class="card-footer bg-transparent border-top-0 text-end">
                             @if($project->url)
-                                <a href="{{ $project->url }}" class="btn btn-primary btn-sm" target="_blank">
+                                <a href="{{ $project->url }}" class="btn btn-primary text-white btn-sm" target="_blank" style="background-color: #EA580C; border-color: #EA580C;">
                                     <i class="bi bi-arrow-right-circle me-1"></i>查看詳情
                                 </a>
                             @endif
