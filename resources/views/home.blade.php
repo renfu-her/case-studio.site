@@ -78,24 +78,6 @@
                             @if($project->sub_title)
                                 <p class="text-primary mb-3">{{ $project->sub_title }}</p>
                             @endif
-                            <p class="card-text text-muted mb-4">{{ Str::limit(strip_tags($project->description), 150) }}</p>
-                            <div class="d-flex flex-column gap-2">
-                                @if($project->client)
-                                    <div class="text-muted small">
-                                        <i class="bi bi-building me-2"></i>{{ $project->client }}
-                                    </div>
-                                @endif
-                                @if($project->location)
-                                    <div class="text-muted small">
-                                        <i class="bi bi-geo-alt me-2"></i>{{ $project->location }}
-                                    </div>
-                                @endif
-                                @if($project->completion_date)
-                                    <div class="text-muted small">
-                                        <i class="bi bi-calendar-event me-2"></i>{{ \Carbon\Carbon::parse($project->completion_date)->format('Y-m-d') }}
-                                    </div>
-                                @endif
-                            </div>
                         </div>
                         <div class="card-footer bg-transparent border-top-0 text-end">
                             @if($project->url)
