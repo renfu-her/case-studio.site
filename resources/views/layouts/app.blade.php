@@ -39,6 +39,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/libraries/aos/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -55,7 +56,7 @@
     </div>
 
     <!-- header top -->
-    <div class="py-4" style="background-color: #EA580C;">
+    <div class="py-4 bg-white">
         <nav class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <a href="{{ url('/') }}" class="navbar-brand">
@@ -68,22 +69,22 @@
                 <div class="d-none d-lg-block">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link text-white hover-underline {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">
+                            <a class="nav-link text-dark {{ request()->is('/') ? 'nav-active-dark' : '' }}" href="{{ url('/') }}">
                                 首頁
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white hover-underline {{ request()->is('projects*') ? 'active' : '' }}" href="{{ url('/projects') }}">
+                            <a class="nav-link text-dark {{ request()->is('projects*') ? 'nav-active-dark' : '' }}" href="{{ url('/projects') }}">
                                 案例
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white hover-underline {{ request()->is('about*') ? 'active' : '' }}" href="{{ url('/about') }}">
+                            <a class="nav-link text-dark {{ request()->is('about*') ? 'nav-active-dark' : '' }}" href="{{ url('/about') }}">
                                 關於我們
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white hover-underline {{ request()->is('contact*') ? 'active' : '' }}" href="{{ url('/contact') }}">
+                            <a class="nav-link text-dark {{ request()->is('contact*') ? 'nav-active-dark' : '' }}" href="{{ url('/contact') }}">
                                 聯絡我們
                             </a>
                         </li>
@@ -91,7 +92,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="btn btn-link d-lg-none p-0 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                <button class="btn btn-link d-lg-none p-0 text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="bi bi-list fs-1"></i>
                 </button>
             </div>
@@ -260,6 +261,20 @@
         border-bottom: 2px solid white;
     }
     .nav-link:hover {
+        background-color: transparent !important;
+    }
+    .nav-link {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    .nav-link:hover {
+        background-color: transparent !important;
+        opacity: 0.8;
+    }
+    .nav-active-dark {
+        border-bottom: 2px solid #EA580C;
+    }
+    .nav-link.active {
         background-color: transparent !important;
     }
     </style>
