@@ -21,6 +21,7 @@ class ProjectImagesRelationManager extends RelationManager
 
     protected static ?string $modelLabel = '專案圖片';
     
+    protected static ?string $title = '專案圖片';
 
     public function form(Form $form): Form
     {
