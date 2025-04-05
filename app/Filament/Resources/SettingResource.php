@@ -74,16 +74,16 @@ class SettingResource extends Resource
                     ->schema([
                         Forms\Components\Section::make('設定值')
                             ->schema([
-                                Forms\Components\TextInput::make('value')
+                                Forms\Components\TextInput::make('setting_value')
                                     ->label('值')
                                     ->visible(fn (Forms\Get $get) => $get('type') === 'text'),
-                                Forms\Components\Textarea::make('value')
+                                Forms\Components\Textarea::make('setting_value')
                                     ->label('值')
                                     ->visible(fn (Forms\Get $get) => $get('type') === 'textarea'),
-                                TinyEditor::make('value')
+                                TinyEditor::make('setting_value')
                                     ->label('值')
                                     ->visible(fn (Forms\Get $get) => $get('type') === 'rich_text'),
-                                Forms\Components\FileUpload::make('value')
+                                Forms\Components\FileUpload::make('setting_value')
                                     ->label('值')
                                     ->image()
                                     ->imageEditor()
@@ -115,7 +115,7 @@ class SettingResource extends Resource
                                         }
                                     })
                                     ->visible(fn (Forms\Get $get) => $get('type') === 'image'),
-                                Forms\Components\FileUpload::make('value')
+                                Forms\Components\FileUpload::make('setting_value')
                                     ->label('值')
                                     ->visible(fn (Forms\Get $get) => $get('type') === 'file'),
                             ]),

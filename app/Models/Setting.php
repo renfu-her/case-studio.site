@@ -15,6 +15,16 @@ class Setting extends Model
         'description',
     ];
 
+    protected function getSettingValueAttribute()
+    {
+        return $this->value;
+    }
+
+    protected function setSettingValueAttribute($value)
+    {
+        $this->value = $value;
+    }
+
     public static function get($key, $default = null)
     {
         $setting = static::where('key', $key)->first();
