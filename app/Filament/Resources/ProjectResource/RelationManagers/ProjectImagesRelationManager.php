@@ -29,6 +29,7 @@ class ProjectImagesRelationManager extends RelationManager
             ->schema([
                 FileUpload::make('image')
                     ->required()
+                    ->columnSpanFull()
                     ->image()
                     ->imageEditor()
                     ->directory('project-images')

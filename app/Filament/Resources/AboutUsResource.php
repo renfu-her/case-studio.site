@@ -47,6 +47,7 @@ class AboutUsResource extends Resource
                     ->label('內容'),
                 FileUpload::make('image')
                     ->image()
+                    ->columnSpanFull()
                     ->imageEditor()
                     ->directory('about-us')
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
@@ -78,6 +79,7 @@ class AboutUsResource extends Resource
                     ->label('圖片'),
                 Forms\Components\Toggle::make('is_active')
                     ->label('啟用')
+                    ->columnSpanFull()
                     ->inline(false)
                     ->default(true),
             ]);

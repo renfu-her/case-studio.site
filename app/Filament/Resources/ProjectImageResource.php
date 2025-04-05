@@ -45,6 +45,7 @@ class ProjectImageResource extends Resource
                     ->label('專案'),
                 Forms\Components\FileUpload::make('image')
                     ->required()
+                    ->columnSpanFull()
                     ->image()
                     ->imageEditor()
                     ->directory('project-images')
