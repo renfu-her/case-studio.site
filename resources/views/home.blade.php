@@ -67,7 +67,7 @@
 
         <div class="row g-4">
             @foreach($services as $service)
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                     <div class="card h-100 border-0 shadow-sm text-center hover-lift">
                         <div class="card-body p-4">
                             <div class="mb-3">
