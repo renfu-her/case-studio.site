@@ -57,7 +57,6 @@ class SettingResource extends Resource
                                         'textarea' => '多行文字',
                                         'rich_text' => '富文本',
                                         'image' => '圖片',
-                                        'file' => '檔案',
                                     ])
                                     ->required()
                                     ->live()
@@ -74,16 +73,16 @@ class SettingResource extends Resource
                     ->schema([
                         Forms\Components\Section::make('設定值')
                             ->schema([
-                                Forms\Components\TextInput::make('setting_value')
+                                Forms\Components\TextInput::make('value')
                                     ->label('值')
                                     ->visible(fn (Forms\Get $get) => $get('type') === 'text'),
-                                Forms\Components\Textarea::make('setting_value')
+                                Forms\Components\Textarea::make('value')
                                     ->label('值')
                                     ->visible(fn (Forms\Get $get) => $get('type') === 'textarea'),
-                                TinyEditor::make('setting_value')
+                                TinyEditor::make('value')
                                     ->label('值')
                                     ->visible(fn (Forms\Get $get) => $get('type') === 'rich_text'),
-                                Forms\Components\FileUpload::make('setting_value')
+                                Forms\Components\FileUpload::make('value')
                                     ->label('值')
                                     ->image()
                                     ->imageEditor()
@@ -115,9 +114,6 @@ class SettingResource extends Resource
                                         }
                                     })
                                     ->visible(fn (Forms\Get $get) => $get('type') === 'image'),
-                                Forms\Components\FileUpload::make('setting_value')
-                                    ->label('值')
-                                    ->visible(fn (Forms\Get $get) => $get('type') === 'file'),
                             ]),
                     ])
                     ->columnSpan(['lg' => 1]),
