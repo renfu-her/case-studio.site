@@ -36,6 +36,9 @@ class ProjectResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->label('標題'),
+                Forms\Components\TextInput::make('sub_title')
+                    ->maxLength(255)
+                    ->label('副標題'),
                 TinyEditor::make('description')
                     ->required()
                     ->columnSpanFull()
@@ -80,6 +83,9 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->label('標題'),
+                Tables\Columns\TextColumn::make('sub_title')
+                    ->searchable()
+                    ->label('副標題'),
                 Tables\Columns\TextColumn::make('client')
                     ->searchable()
                     ->label('客戶'),
