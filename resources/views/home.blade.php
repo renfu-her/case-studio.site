@@ -3,25 +3,52 @@
 @section('content')
 <!-- Banner Section -->
 <section class="banner-section position-relative overflow-hidden">
-    @if($banner['image'])
-        <div class="banner-image position-absolute w-100 h-100">
-            <img src="{{ Storage::url($banner['image']) }}" class="w-100 h-100 object-fit-cover" alt="{{ $banner['title'] }}">
-            <div class="banner-overlay position-absolute w-100 h-100 bg-dark bg-opacity-50"></div>
+    @if($slides->isNotEmpty())
+        <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                @foreach($slides as $key => $slide)
+                    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="{{ $key }}" 
+                            class="{{ $key === 0 ? 'active' : '' }}" aria-current="{{ $key === 0 ? 'true' : 'false' }}"
+                            aria-label="Slide {{ $key + 1 }}"></button>
+                @endforeach
+            </div>
+            <div class="carousel-inner">
+                @foreach($slides as $key => $slide)
+                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" style="height: 600px;">
+                        <img src="{{ Storage::url($slide->image) }}" 
+                             class="d-block w-100 h-100 object-fit-cover" 
+                             alt="{{ $slide->title }}">
+                        <div class="carousel-caption d-flex align-items-center justify-content-center h-100">
+                            <div class="text-center">
+                                <h1 class="display-4 text-white mb-4" data-aos="fade-up">{{ $slide->title }}</h1>
+                                @if($slide->description)
+                                    <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="100">
+                                        {{ $slide->description }}
+                                    </p>
+                                @endif
+                                @if($slide->link)
+                                    <a href="{{ $slide->link }}" 
+                                       class="btn btn-outline-light btn-lg" 
+                                       data-aos="fade-up" 
+                                       data-aos-delay="200">
+                                        了解更多
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     @endif
-    <div class="container position-relative py-8 py-md-12">
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-8">
-                <h1 class="display-4 text-white mb-4" data-aos="fade-up">{{ $banner['title'] }}</h1>
-                @if($banner['subtitle'])
-                    <h2 class="h3 text-white mb-4" data-aos="fade-up" data-aos-delay="100">{{ $banner['subtitle'] }}</h2>
-                @endif
-                @if($banner['description'])
-                    <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="200">{{ $banner['description'] }}</p>
-                @endif
-            </div>
-        </div>
-    </div>
 </section>
 
 <!-- Projects Section -->
