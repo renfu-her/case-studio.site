@@ -95,4 +95,36 @@
     </div>
 </section>
 
+<!-- Services Section -->
+<section class="services-section py-8 py-md-12 bg-light">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-6">
+            <div class="col-lg-8">
+                <h2 class="display-5 mb-4" data-aos="fade-up">
+                    <span class="pb-2" style="border-bottom: 3px solid #EA580C;">我們的服務</span>
+                </h2>
+                <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">專業的服務，為您提供最佳解決方案</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            @foreach($services as $service)
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                    <div class="card h-100 border-0 shadow-sm text-center hover-lift">
+                        <div class="card-body p-5">
+                            <div class="mb-4">
+                                <i class="{{ $service->icon }} fa-3x text-primary" style="color: #EA580C !important;"></i>
+                            </div>
+                            <h3 class="card-title h4 mb-3">{{ $service->title }}</h3>
+                            @if($service->sub_title)
+                                <p class="card-text text-muted mb-0">{{ $service->sub_title }}</p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 @endsection 
