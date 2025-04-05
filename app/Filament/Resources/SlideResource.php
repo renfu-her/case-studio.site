@@ -101,8 +101,7 @@ class SlideResource extends Resource
                     ->label('標題'),
                 Tables\Columns\ImageColumn::make('image')
                     ->label('圖片'),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->boolean()
+                Tables\Columns\ToggleColumn::make('is_active')
                     ->label('啟用'),
                 Tables\Columns\TextColumn::make('sort_order')
                     ->sortable()

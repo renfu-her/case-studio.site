@@ -92,8 +92,7 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('location')
                     ->searchable()
                     ->label('地點'),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->boolean()
+                Tables\Columns\ToggleColumn::make('is_active')
                     ->label('啟用'),
                 Tables\Columns\TextColumn::make('sort_order')
                     ->sortable()

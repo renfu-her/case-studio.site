@@ -66,8 +66,7 @@ class ContactUsResource extends Resource
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable()
                     ->label('電話'),
-                Tables\Columns\IconColumn::make('is_read')
-                    ->boolean()
+                Tables\Columns\ToggleColumn::make('is_read')
                     ->label('已讀'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
