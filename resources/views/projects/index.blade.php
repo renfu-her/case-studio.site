@@ -17,18 +17,28 @@
         @foreach($projects as $project)
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->index % 3 * 100 }}">
                 <div class="card h-100 border-0 shadow-sm hover-lift">
-                    @if($project->images->isNotEmpty())
-                        <img src="{{ Storage::url($project->images->first()->image) }}" 
-                             class="card-img-top" 
-                             alt="{{ $project->title }}"
-                             style="height: 200px; object-fit: cover;">
-                    @endif
-                    <div class="card-body p-3">
-                        <h3 class="card-title h5 mb-2">{{ $project->title }}</h3>
-                        @if($project->sub_title)
-                            <p class="text-primary small mb-2">{{ $project->sub_title }}</p>
+                    <div class="position-relative" style="height: 250px;">
+                        @if($project->images->isNotEmpty())
+                            <div class="position-absolute w-100 h-100 bg-white d-flex align-items-center justify-content-center">
+                                <img src="{{ Storage::url($project->images->first()->image) }}" 
+                                     class="mw-100 mh-100" 
+                                     alt="{{ $project->title }}"
+                                     style="object-fit: contain;">
+                            </div>
+                        @else
+                            <div class="position-absolute w-100 h-100 bg-light d-flex align-items-center justify-content-center">
+                                <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
+                            </div>
                         @endif
-                        <div class="d-flex justify-content-between align-items-center">
+                    </div>
+                    <div class="card-body p-3 d-flex flex-column">
+                        <div class="flex-grow-1">
+                            <h3 class="card-title h5 mb-2">{{ $project->title }}</h3>
+                            @if($project->sub_title)
+                                <p class="text-primary small mb-0">{{ $project->sub_title }}</p>
+                            @endif
+                        </div>
+                        <div class="mt-3 d-flex justify-content-between align-items-center">
                             <a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary btn-sm text-white" style="background-color: #EA580C; border-color: #EA580C;">
                                 <i class="bi bi-arrow-right-circle me-1"></i>查看詳情
                             </a>
