@@ -58,14 +58,47 @@
 
             <!-- 輪播控制按鈕 -->
             <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <div class="d-flex align-items-center justify-content-center" 
+                     style="width: 50px; height: 50px; background: rgba(0, 0, 0, 0.5); border-radius: 50%;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </div>
                 <span class="visually-hidden">上一張</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <div class="d-flex align-items-center justify-content-center" 
+                     style="width: 50px; height: 50px; background: rgba(0, 0, 0, 0.5); border-radius: 50%;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </div>
                 <span class="visually-hidden">下一張</span>
             </button>
         </div>
+
+        <style>
+            .carousel-control-prev,
+            .carousel-control-next {
+                width: 10%;
+                opacity: 0.8;
+                transition: opacity 0.3s;
+            }
+
+            .carousel-control-prev:hover,
+            .carousel-control-next:hover {
+                opacity: 1;
+            }
+
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            @media (max-width: 768px) {
+                .carousel-control-prev,
+                .carousel-control-next {
+                    width: 15%;
+                }
+            }
+        </style>
     @endif
 </section>
 
