@@ -24,11 +24,13 @@
             </div>
             <div class="carousel-inner">
                 @foreach($project->images as $key => $image)
-                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                        <img src="{{ Storage::url($image->image) }}" 
-                             class="d-block w-100" 
-                             alt="{{ $project->title }}"
-                             style="height: 600px; object-fit: contain; background-color: white;">
+                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" style="height: 600px; background-color: white;">
+                        <div class="h-100 d-flex align-items-center justify-content-center">
+                            <img src="{{ Storage::url($image->image) }}" 
+                                 class="mw-100 mh-100" 
+                                 alt="{{ $project->title }}"
+                                 style="object-fit: contain;">
+                        </div>
                     </div>
                 @endforeach
             </div>
