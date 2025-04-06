@@ -28,7 +28,7 @@
                         <img src="{{ Storage::url($image->image) }}" 
                              class="d-block w-100" 
                              alt="{{ $project->title }}"
-                             style="height: 600px; object-fit: cover;">
+                             style="height: 600px; object-fit: contain; background-color: white;">
                     </div>
                 @endforeach
             </div>

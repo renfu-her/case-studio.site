@@ -106,7 +106,7 @@
                                 <img src="{{ Storage::url($project->images->first()->image) }}" 
                                      class="position-absolute w-100 h-100" 
                                      alt="{{ $project->title }}"
-                                     style="object-fit: cover;">
+                                     style="object-fit: contain; padding: 1rem; background-color: white;">
                             @else
                                 <div class="position-absolute w-100 h-100 bg-light d-flex align-items-center justify-content-center">
                                     <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
