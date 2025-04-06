@@ -2,11 +2,10 @@
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
-
+use Illuminate\Support\Facades\Schedule;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Artisan::command('mail:process-queue', function () {
-    $this->comment('Processing mail queue...');
-})->purpose('Process the mail queue');
+
+Schedule::command('mail:process-queue')->everyMinute();
