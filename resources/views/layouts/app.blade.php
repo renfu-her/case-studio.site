@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr" data-bs-theme="auto">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,13 +43,14 @@
     <link rel="stylesheet" href="{{ asset('assets/libraries/aos/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown-light.min.css">
 
     <style>
         .markdown-body {
             font-family: inherit;
             line-height: 1.8;
             color: #4a5568;
+            background-color: transparent !important;
         }
         .markdown-body h1,
         .markdown-body h2,
@@ -60,6 +61,7 @@
             margin-top: 1.5em;
             margin-bottom: 1em;
             color: #2d3748;
+            border-bottom: none;
         }
         .markdown-body p {
             margin-bottom: 1.25em;
