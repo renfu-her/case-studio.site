@@ -60,14 +60,14 @@
             <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
                 <div class="d-flex align-items-center justify-content-center" 
                      style="width: 50px; height: 50px; background: rgba(0, 0, 0, 0.5); border-radius: 50%;">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <i class="bi bi-chevron-left text-white" style="font-size: 24px;"></i>
                 </div>
                 <span class="visually-hidden">上一張</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
                 <div class="d-flex align-items-center justify-content-center" 
                      style="width: 50px; height: 50px; background: rgba(0, 0, 0, 0.5); border-radius: 50%;">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <i class="bi bi-chevron-right text-white" style="font-size: 24px;"></i>
                 </div>
                 <span class="visually-hidden">下一張</span>
             </button>
@@ -84,12 +84,6 @@
             .carousel-control-prev:hover,
             .carousel-control-next:hover {
                 opacity: 1;
-            }
-
-            .carousel-control-prev-icon,
-            .carousel-control-next-icon {
-                width: 24px;
-                height: 24px;
             }
 
             @media (max-width: 768px) {
