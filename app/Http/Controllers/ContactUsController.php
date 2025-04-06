@@ -29,7 +29,7 @@ class ContactUsController extends Controller
 
         // 發送郵件通知
         try {
-            Mail::to(config('mail.admin_email', 'admin@example.com'))
+            Mail::to(config('mail.admin_email', 'renfu.her@gmail.com'))
                 ->send(new ContactFormMail($contact));
         } catch (\Exception $e) {
             // 記錄錯誤但不影響用戶體驗
