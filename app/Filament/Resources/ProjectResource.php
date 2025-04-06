@@ -12,7 +12,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use Filament\Forms\Components\Section;
 use Coolsam\FilamentFlatpickr\Forms\Components\Flatpickr;
 
@@ -39,11 +38,11 @@ class ProjectResource extends Resource
                 Forms\Components\TextInput::make('sub_title')
                     ->maxLength(255)
                     ->label('副標題'),
-                TinyEditor::make('description')
+                Forms\Components\MarkdownEditor::make('description')
                     ->required()
                     ->columnSpanFull()
-                    ->minHeight(450)
-                    ->label('描述'),
+                    ->label('描述')
+                    ->height(450),
                 Forms\Components\TextInput::make('client')
                     ->maxLength(255)
                     ->label('客戶'),
