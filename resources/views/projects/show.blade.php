@@ -47,8 +47,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
+                <div class="card-body p-4 d-flex flex-column">
                     <!-- 標題 -->
                     <div class="text-center mb-4">
                         <h1 class="h3 mb-3">
@@ -99,7 +99,7 @@
                     </div>
 
                     @if($project->url)
-                        <div class="text-center">
+                        <div class="text-center mt-auto">
                             <a href="{{ $project->url }}" class="btn btn-primary px-5 text-white" target="_blank" 
                                style="background-color: #EA580C; border-color: #EA580C;">
                                 <i class="bi bi-link-45deg me-2"></i>訪問專案網站
