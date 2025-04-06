@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactUs;
+use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class ContactUsController extends Controller
 {
@@ -22,7 +25,16 @@ class ContactUsController extends Controller
         ]);
 
         $validated['is_read'] = false;
-        ContactUs::create($validated);
+        $contact = ContactUs::create($validated);
+
+        // 發送郵件通知
+        try {
+            Mail::to(config('mail.admin_email', 'admin@example.com'))
+                ->send(new ContactFormMail($contact));
+        } catch (\Exception $e) {
+            // 記錄錯誤但不影響用戶體驗
+            Log::error('聯絡表單郵件發送失敗：' . $e->getMessage());
+        }
 
         return redirect()
             ->route('contact.index')
