@@ -55,14 +55,6 @@
                                                     {{ $slide->description }}
                                                 </p>
                                             @endif
-                                            @if($slide->link)
-                                                <a href="{{ $slide->link }}" 
-                                                   class="btn btn-outline-light btn-lg" 
-                                                   data-aos="fade-up" 
-                                                   data-aos-delay="200">
-                                                    了解更多
-                                                </a>
-                                            @endif
                                         </div>
                                     </div>
                                 </div>
