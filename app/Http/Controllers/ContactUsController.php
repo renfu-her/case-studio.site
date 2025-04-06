@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactUs;
+use App\Models\SendMailQueue;
 use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 
 class ContactUsController extends Controller
@@ -27,14 +27,14 @@ class ContactUsController extends Controller
         $validated['is_read'] = false;
         $contact = ContactUs::create($validated);
 
-        // 發送郵件通知
-        try {
-            Mail::to(config('mail.admin_email', 'renfu.her@gmail.com'))
-                ->send(new ContactFormMail($contact));
-        } catch (\Exception $e) {
-            // 記錄錯誤但不影響用戶體驗
-            Log::error('聯絡表單郵件發送失敗：' . $e->getMessage());
-        }
+        // 創建郵件隊列記錄
+        SendMailQueue::create([
+            'mailable_type' => ContactUs::class,
+            'mailable_id' => $contact->id,
+            'mail_class' => ContactFormMail::class,
+            'to_email' => config('mail.admin_email', 'renfu.her@gmail.com'),
+            'subject' => '新的聯絡表單提交'
+        ]);
 
         return redirect()
             ->route('contact.index')
