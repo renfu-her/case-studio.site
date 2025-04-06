@@ -10,7 +10,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::where('is_active', true)
-            ->orderBy('sort_order')
+            ->orderByDesc('sort_order')
             ->with('images')
             ->paginate(12);
 

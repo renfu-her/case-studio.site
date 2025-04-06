@@ -16,7 +16,7 @@ class HomeController extends Controller
             ->get();
 
         $projects = Project::where('is_active', true)
-            ->orderBy('sort_order')
+            ->orderByDesc('sort_order')
             ->with('images')
             ->take(6)
             ->get();
