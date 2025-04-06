@@ -22,7 +22,6 @@ class ServiceResource extends Resource
     protected static ?string $navigationGroup = '內容管理';
     protected static ?string $navigationLabel = '服務';
     protected static ?string $modelLabel = '服務';
-
     protected static ?string $pluralModelLabel = '服務';
 
     protected static ?int $navigationSort = 6;
