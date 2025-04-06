@@ -36,6 +36,10 @@ class ProcessMailQueue extends Command
                     try {
                         // 實例化郵件類
                         $mailableClass = $queue->mail_class;
+                        if (!class_exists($mailableClass)) {
+                            throw new \Exception("郵件類 {$mailableClass} 不存在");
+                        }
+
                         $mailable = new $mailableClass($queue->mailable);
 
                         // 發送郵件

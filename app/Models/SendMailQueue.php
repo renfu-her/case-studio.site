@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class SendMailQueue extends Model
 {
     protected $fillable = [
+        'mailable_type',
+        'mailable_id',
         'mail_class',
         'to_email',
         'subject',

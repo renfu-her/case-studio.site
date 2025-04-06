@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('send_mail_queues', function (Blueprint $table) {
             $table->id();
-            $table->morphs('mailable');  // 關聯到其他模型（如 ContactUs）
-            $table->string('mail_class'); // 郵件類別名稱
-            $table->string('to_email');   // 收件人郵箱
-            $table->string('subject');    // 郵件主題
-            $table->text('error_message')->nullable(); // 錯誤訊息
-            $table->integer('attempts')->default(0);   // 嘗試次數
-            $table->timestamp('last_attempt_at')->nullable(); // 最後嘗試時間
-            $table->boolean('is_sent')->default(false); // 是否已發送
+            $table->string('mail_class')->comment('郵件類別名稱');
+            $table->string('to_email')->comment('收件人郵箱');
+            $table->string('subject')->comment('郵件主題');
+            $table->text('error_message')->nullable()->comment('錯誤訊息');
+            $table->unsignedTinyInteger('attempts')->default(0)->comment('嘗試次數');
+            $table->timestamp('last_attempt_at')->nullable()->comment('最後嘗試時間');
+            $table->boolean('is_sent')->default(false)->comment('是否已發送');
             $table->timestamps();
         });
     }
