@@ -42,7 +42,7 @@ class ProjectResource extends Resource
                     ->required()
                     ->columnSpanFull()
                     ->label('描述')
-                    ->height(450),
+                    ->rows(20),
                 Forms\Components\TextInput::make('client')
                     ->maxLength(255)
                     ->label('客戶'),
