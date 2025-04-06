@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\FileUpload;
 
 class AboutUsResource extends Resource
@@ -40,10 +40,11 @@ class AboutUsResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->label('標題'),
-                TinyEditor::make('content')
+                MarkdownEditor::make('content')
                     ->required()
                     ->columnSpanFull()
-                    ->minHeight(450)
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory('about-us/attachments')
                     ->label('內容'),
                 FileUpload::make('image')
                     ->image()
