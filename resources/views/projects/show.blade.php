@@ -100,7 +100,7 @@
 
                     @if($project->url)
                         <div class="text-center">
-                            <a href="{{ $project->url }}" class="btn btn-primary px-5" target="_blank" 
+                            <a href="{{ $project->url }}" class="btn btn-primary px-5 text-white" target="_blank" 
                                style="background-color: #EA580C; border-color: #EA580C;">
                                 <i class="bi bi-link-45deg me-2"></i>訪問專案網站
                             </a>
