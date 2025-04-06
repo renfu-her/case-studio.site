@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
     {
         // 每5分鐘處理一次郵件隊列
         $schedule->command('mail:process-queue')
-                ->everyFiveMinutes()
+                ->everyMinute()
                 ->withoutOverlapping();
     }
 
