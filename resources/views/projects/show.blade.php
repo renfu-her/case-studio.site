@@ -49,57 +49,59 @@
         <div class="col-lg-8">
             <div class="card h-100 border-0 shadow-sm hover-lift">
                 <div class="card-body p-4 d-flex flex-column">
-                    <!-- 標題 -->
-                    <div class="text-center mb-4">
-                        <h1 class="h3 mb-3">
-                            <span class="pb-2" style="border-bottom: 3px solid #EA580C;">{{ $project->title }}</span>
-                        </h1>
-                        @if($project->sub_title)
-                            <p class="text-primary mb-0">{{ $project->sub_title }}</p>
-                        @endif
-                    </div>
-
-                    <!-- 專案描述 -->
-                    @if($project->description)
-                        <div class="text-center mb-5">
-                            <h5 class="mb-4">
-                                <span class="pb-2" style="border-bottom: 2px solid #EA580C;">專案描述</span>
-                            </h5>
-                            <div class="text-start markdown-body">
-                                {!! Str::markdown($project->description) !!}
-                            </div>
+                    <div class="flex-grow-1">
+                        <!-- 標題 -->
+                        <div class="text-center mb-4">
+                            <h1 class="h3 mb-3">
+                                <span class="pb-2" style="border-bottom: 3px solid #EA580C;">{{ $project->title }}</span>
+                            </h1>
+                            @if($project->sub_title)
+                                <p class="text-primary mb-0">{{ $project->sub_title }}</p>
+                            @endif
                         </div>
-                    @endif
 
-                    <!-- 專案資訊 -->
-                    <div class="mb-4">
-                        <h5 class="text-center mb-4">
-                            <span class="pb-2" style="border-bottom: 2px solid #EA580C;">專案資訊</span>
-                        </h5>
-                        <div class="row justify-content-center">
-                            @if($project->client)
-                                <div class="col-md-4 text-center mb-3">
-                                    <strong class="d-block mb-2">客戶</strong>
-                                    <span class="text-muted">{{ $project->client }}</span>
+                        <!-- 專案描述 -->
+                        @if($project->description)
+                            <div class="text-center mb-5">
+                                <h5 class="mb-4">
+                                    <span class="pb-2" style="border-bottom: 2px solid #EA580C;">專案描述</span>
+                                </h5>
+                                <div class="text-start markdown-body">
+                                    {!! Str::markdown($project->description) !!}
                                 </div>
-                            @endif
-                            @if($project->completion_date)
-                                <div class="col-md-4 text-center mb-3">
-                                    <strong class="d-block mb-2">完成日期</strong>
-                                    <span class="text-muted">{{ $project->completion_date }}</span>
-                                </div>
-                            @endif
-                            @if($project->location)
-                                <div class="col-md-4 text-center mb-3">
-                                    <strong class="d-block mb-2">地點</strong>
-                                    <span class="text-muted">{{ $project->location }}</span>
-                                </div>
-                            @endif
+                            </div>
+                        @endif
+
+                        <!-- 專案資訊 -->
+                        <div class="mb-4">
+                            <h5 class="text-center mb-4">
+                                <span class="pb-2" style="border-bottom: 2px solid #EA580C;">專案資訊</span>
+                            </h5>
+                            <div class="row justify-content-center">
+                                @if($project->client)
+                                    <div class="col-md-4 text-center mb-3">
+                                        <strong class="d-block mb-2">客戶</strong>
+                                        <span class="text-muted">{{ $project->client }}</span>
+                                    </div>
+                                @endif
+                                @if($project->completion_date)
+                                    <div class="col-md-4 text-center mb-3">
+                                        <strong class="d-block mb-2">完成日期</strong>
+                                        <span class="text-muted">{{ $project->completion_date }}</span>
+                                    </div>
+                                @endif
+                                @if($project->location)
+                                    <div class="col-md-4 text-center mb-3">
+                                        <strong class="d-block mb-2">地點</strong>
+                                        <span class="text-muted">{{ $project->location }}</span>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
                     @if($project->url)
-                        <div class="text-center mt-auto">
+                        <div class="text-center mt-4">
                             <a href="{{ $project->url }}" class="btn btn-primary px-5 text-white" target="_blank" 
                                style="background-color: #EA580C; border-color: #EA580C;">
                                 <i class="bi bi-link-45deg me-2"></i>訪問專案網站
