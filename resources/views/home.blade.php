@@ -37,25 +37,17 @@
                             @endif
 
                             <!-- 輪播文字內容 -->
-                            <div class="position-absolute w-100 h-100" 
-                                 style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));">
-                                <div class="container h-100">
-                                    <div class="d-flex align-items-center justify-content-center h-100">
-                                        <div class="text-center">
-                                            <h1 class="display-4 text-white mb-4" 
-                                                data-aos="fade-up" 
-                                                style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-                                                {{ $slide->title }}
-                                            </h1>
-                                            @if($slide->description)
-                                                <p class="lead text-white mb-5" 
-                                                   data-aos="fade-up" 
-                                                   data-aos-delay="100"
-                                                   style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);">
-                                                    {{ $slide->description }}
-                                                </p>
-                                            @endif
-                                        </div>
+                            <div class="position-absolute bottom-0 w-100" style="background: rgba(0, 0, 0, 0.5);">
+                                <div class="container">
+                                    <div class="text-center py-4">
+                                        <h2 class="text-white mb-2" data-aos="fade-up">
+                                            {{ $slide->title }}
+                                        </h2>
+                                        @if($slide->description)
+                                            <p class="text-white-75 mb-0" data-aos="fade-up" data-aos-delay="100">
+                                                {{ $slide->description }}
+                                            </p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
