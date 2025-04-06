@@ -5,49 +5,81 @@
 <section class="banner-section position-relative overflow-hidden">
     @if($slides->isNotEmpty())
         <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- 輪播指示器 -->
             <div class="carousel-indicators">
                 @foreach($slides as $key => $slide)
-                    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="{{ $key }}" 
-                            class="{{ $key === 0 ? 'active' : '' }}" aria-current="{{ $key === 0 ? 'true' : 'false' }}"
-                            aria-label="Slide {{ $key + 1 }}"></button>
+                    <button type="button" 
+                            data-bs-target="#bannerCarousel" 
+                            data-bs-slide-to="{{ $key }}" 
+                            class="{{ $key === 0 ? 'active' : '' }}" 
+                            aria-current="{{ $key === 0 ? 'true' : 'false' }}"
+                            aria-label="Slide {{ $key + 1 }}">
+                    </button>
                 @endforeach
             </div>
+
+            <!-- 輪播內容 -->
             <div class="carousel-inner">
                 @foreach($slides as $key => $slide)
-                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" style="height: 600px;">
-                        <img src="{{ Storage::url($slide->image) }}" 
-                             class="d-block w-100 h-100 object-fit-cover" 
-                             alt="{{ $slide->title }}">
-                        <div class="carousel-caption d-flex align-items-center justify-content-center h-100">
-                            <div class="text-center">
-                                <h1 class="display-4 text-white mb-4 text-shadow-lg" data-aos="fade-up" 
-                                    style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">{{ $slide->title }}</h1>
-                                @if($slide->description)
-                                    <p class="lead text-white mb-5 text-shadow" data-aos="fade-up" data-aos-delay="100"
-                                       style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);">
-                                        {{ $slide->description }}
-                                    </p>
-                                @endif
-                                @if($slide->link)
-                                    <a href="{{ $slide->link }}" 
-                                       class="btn btn-outline-light btn-lg shadow-sm" 
-                                       data-aos="fade-up" 
-                                       data-aos-delay="200">
-                                        了解更多
-                                    </a>
-                                @endif
+                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                        <div class="position-relative" style="height: 600px;">
+                            @if($slide->image)
+                                <div class="position-absolute w-100 h-100">
+                                    <img src="{{ Storage::url($slide->image) }}" 
+                                         class="w-100 h-100" 
+                                         alt="{{ $slide->title }}"
+                                         style="object-fit: cover;">
+                                </div>
+                            @else
+                                <div class="position-absolute w-100 h-100 bg-light d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-image text-muted" style="font-size: 4rem;"></i>
+                                </div>
+                            @endif
+
+                            <!-- 輪播文字內容 -->
+                            <div class="position-absolute w-100 h-100" 
+                                 style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));">
+                                <div class="container h-100">
+                                    <div class="d-flex align-items-center justify-content-center h-100">
+                                        <div class="text-center">
+                                            <h1 class="display-4 text-white mb-4" 
+                                                data-aos="fade-up" 
+                                                style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                                                {{ $slide->title }}
+                                            </h1>
+                                            @if($slide->description)
+                                                <p class="lead text-white mb-5" 
+                                                   data-aos="fade-up" 
+                                                   data-aos-delay="100"
+                                                   style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);">
+                                                    {{ $slide->description }}
+                                                </p>
+                                            @endif
+                                            @if($slide->link)
+                                                <a href="{{ $slide->link }}" 
+                                                   class="btn btn-outline-light btn-lg" 
+                                                   data-aos="fade-up" 
+                                                   data-aos-delay="200">
+                                                    了解更多
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
+
+            <!-- 輪播控制按鈕 -->
             <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">上一張</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">下一張</span>
             </button>
         </div>
     @endif
