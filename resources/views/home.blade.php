@@ -122,13 +122,16 @@
                                     <p class="text-primary small mb-0">{{ $project->sub_title }}</p>
                                 @endif
                             </div>
-                            @if($project->url)
-                                <div class="mt-3">
-                                    <a href="{{ $project->url }}" class="btn btn-primary btn-sm text-white" target="_blank" style="background-color: #EA580C; border-color: #EA580C;">
-                                        <i class="bi bi-arrow-right-circle me-1"></i>查看詳情
+                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                <a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary btn-sm text-white" style="background-color: #EA580C; border-color: #EA580C;">
+                                    <i class="bi bi-arrow-right-circle me-1"></i>查看詳情
+                                </a>
+                                @if($project->url)
+                                    <a href="{{ $project->url }}" class="btn btn-outline-primary btn-sm" target="_blank" style="color: #EA580C; border-color: #EA580C;">
+                                        <i class="bi bi-link-45deg me-1"></i>訪問網站
                                     </a>
-                                </div>
-                            @endif
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
