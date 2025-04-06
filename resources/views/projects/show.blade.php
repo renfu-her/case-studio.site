@@ -65,7 +65,9 @@
                             <h5 class="mb-4">
                                 <span class="pb-2" style="border-bottom: 2px solid #EA580C;">專案描述</span>
                             </h5>
-                            <div class="text-muted">{!! $project->description !!}</div>
+                            <div class="text-start markdown-body">
+                                {!! Str::markdown($project->description) !!}
+                            </div>
                         </div>
                     @endif
 

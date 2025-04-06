@@ -43,6 +43,81 @@
     <link rel="stylesheet" href="{{ asset('assets/libraries/aos/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
+
+    <style>
+        .markdown-body {
+            font-family: inherit;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        .markdown-body h1,
+        .markdown-body h2,
+        .markdown-body h3,
+        .markdown-body h4,
+        .markdown-body h5,
+        .markdown-body h6 {
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+            color: #2d3748;
+        }
+        .markdown-body p {
+            margin-bottom: 1.25em;
+        }
+        .markdown-body ul,
+        .markdown-body ol {
+            margin-bottom: 1.25em;
+            padding-left: 1.5em;
+        }
+        .markdown-body li {
+            margin-bottom: 0.5em;
+        }
+        .markdown-body a {
+            color: #EA580C;
+            text-decoration: none;
+        }
+        .markdown-body a:hover {
+            text-decoration: underline;
+        }
+        .markdown-body img {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            margin: 1.5em 0;
+        }
+        .markdown-body blockquote {
+            border-left: 4px solid #EA580C;
+            padding-left: 1em;
+            margin: 1.5em 0;
+            color: #718096;
+        }
+        .markdown-body code {
+            background-color: #f7fafc;
+            padding: 0.2em 0.4em;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+        }
+        .markdown-body pre {
+            background-color: #f7fafc;
+            padding: 1em;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5em 0;
+        }
+        .markdown-body table {
+            width: 100%;
+            margin: 1.5em 0;
+            border-collapse: collapse;
+        }
+        .markdown-body th,
+        .markdown-body td {
+            padding: 0.75em;
+            border: 1px solid #e2e8f0;
+        }
+        .markdown-body th {
+            background-color: #f7fafc;
+            font-weight: 600;
+        }
+    </style>
 
     <!-- Scripts -->
     <script src="{{ asset('assets/js/color-modes.js') }}"></script>
