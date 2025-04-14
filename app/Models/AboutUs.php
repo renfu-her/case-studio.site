@@ -13,7 +13,10 @@ class AboutUs extends Model
         'title',
         'content',
         'image',
-        'is_active'
+        'is_active',
+        'meta_title',
+        'meta_description',
+        'meta_image'
     ];
 
     protected $casts = [

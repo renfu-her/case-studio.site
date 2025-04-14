@@ -36,53 +36,72 @@ class AboutUsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('標題'),
-                MarkdownEditor::make('content')
-                    ->required()
-                    ->columnSpanFull()
-                    ->fileAttachmentsDisk('public')
-                    ->fileAttachmentsDirectory('about-us/attachments')
-                    ->label('內容'),
-                FileUpload::make('image')
-                    ->image()
-                    ->columnSpanFull()
-                    ->imageEditor()
-                    ->directory('about-us')
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->downloadable()
-                    ->openable()
-                    ->getUploadedFileNameForStorageUsing(
-                        fn($file): string => (string) str(Str::uuid7() . '.webp')
-                    )
-                    ->saveUploadedFileUsing(function ($file) {
-                        $manager = new ImageManager(new Driver());
-                        $image = $manager->read($file);
-                        
-                        $image->scale(1024);
+                Forms\Components\Section::make('基本資訊')
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('標題'),
+                        MarkdownEditor::make('content')
+                            ->required()
+                            ->columnSpanFull()
+                            ->fileAttachmentsDisk('public')
+                            ->fileAttachmentsDirectory('about-us/attachments')
+                            ->label('內容'),
+                        FileUpload::make('image')
+                            ->image()
+                            ->columnSpanFull()
+                            ->imageEditor()
+                            ->directory('about-us')
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                            ->downloadable()
+                            ->openable()
+                            ->getUploadedFileNameForStorageUsing(
+                                fn($file): string => (string) str(Str::uuid7() . '.webp')
+                            )
+                            ->saveUploadedFileUsing(function ($file) {
+                                $manager = new ImageManager(new Driver());
+                                $image = $manager->read($file);
 
-                        $filename = Str::uuid7()->toString() . '.webp';
+                                $image->scale(1024);
 
-                        if (!file_exists(storage_path('app/public/about-us'))) {
-                            mkdir(storage_path('app/public/about-us'), 0755, true);
-                        }
+                                $filename = Str::uuid7()->toString() . '.webp';
 
-                        $image->toWebp(80)->save(storage_path('app/public/about-us/' . $filename));
-                        return 'about-us/' . $filename;
-                    })
-                    ->deleteUploadedFileUsing(function ($file) {
-                        if ($file) {
-                            Storage::disk('public')->delete($file);
-                        }
-                    })
-                    ->label('圖片'),
-                Forms\Components\Toggle::make('is_active')
-                    ->label('啟用')
-                    ->columnSpanFull()
-                    ->inline(false)
-                    ->default(true),
+                                if (!file_exists(storage_path('app/public/about-us'))) {
+                                    mkdir(storage_path('app/public/about-us'), 0755, true);
+                                }
+
+                                $image->toWebp(80)->save(storage_path('app/public/about-us/' . $filename));
+                                return 'about-us/' . $filename;
+                            })
+                            ->deleteUploadedFileUsing(function ($file) {
+                                if ($file) {
+                                    Storage::disk('public')->delete($file);
+                                }
+                            })
+                            ->label('圖片'),
+                        Forms\Components\Toggle::make('is_active')
+                            ->label('啟用')
+                            ->columnSpanFull()
+                            ->inline(false)
+                            ->default(true),
+                    ]),
+                Forms\Components\Section::make('SEO 設定')
+                    ->schema([
+                        Forms\Components\TextInput::make('meta_title')
+                            ->maxLength(60)
+                            ->label('Meta 標題')
+                            ->helperText('建議長度：50-60 字元'),
+                        Forms\Components\Textarea::make('meta_description')
+                            ->maxLength(160)
+                            ->label('Meta 描述')
+                            ->helperText('建議長度：120-160 字元'),
+                        Forms\Components\FileUpload::make('meta_image')
+                            ->image()
+                            ->directory('meta-images')
+                            ->label('Meta 圖片')
+                            ->helperText('建議尺寸：1200x630 像素'),
+                    ]),
             ]);
     }
 
@@ -95,8 +114,13 @@ class AboutUsResource extends Resource
                     ->label('標題'),
                 Tables\Columns\ImageColumn::make('image')
                     ->label('圖片'),
-                Tables\Columns\ToggleColumn::make('is_active')
+                Tables\Columns\IconColumn::make('is_active')
+                    ->boolean()
                     ->label('啟用'),
+                Tables\Columns\TextColumn::make('meta_title')
+                    ->searchable()
+                    ->toggleable()
+                    ->label('Meta 標題'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
