@@ -96,9 +96,37 @@ class AboutUsResource extends Resource
                             ->maxLength(160)
                             ->label('Meta 描述')
                             ->helperText('建議長度：120-160 字元'),
-                        Forms\Components\FileUpload::make('meta_image')
+                        FileUpload::make('meta_image')
                             ->image()
-                            ->directory('meta-images')
+                            ->columnSpanFull()
+                            ->imageEditor()
+                            ->directory('about-us')
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                            ->downloadable()
+                            ->openable()
+                            ->getUploadedFileNameForStorageUsing(
+                                fn($file): string => (string) str(Str::uuid7() . '.webp')
+                            )
+                            ->saveUploadedFileUsing(function ($file) {
+                                $manager = new ImageManager(new Driver());
+                                $image = $manager->read($file);
+
+                                $image->scale(1024);
+
+                                $filename = Str::uuid7()->toString() . '.webp';
+
+                                if (!file_exists(storage_path('app/public/about-us'))) {
+                                    mkdir(storage_path('app/public/about-us'), 0755, true);
+                                }
+
+                                $image->toWebp(80)->save(storage_path('app/public/about-us/' . $filename));
+                                return 'about-us/' . $filename;
+                            })
+                            ->deleteUploadedFileUsing(function ($file) {
+                                if ($file) {
+                                    Storage::disk('public')->delete($file);
+                                }
+                            })
                             ->label('Meta 圖片')
                             ->helperText('建議尺寸：1200x630 像素'),
                     ]),
