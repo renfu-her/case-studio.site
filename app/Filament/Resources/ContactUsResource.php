@@ -50,22 +50,6 @@ class ContactUsResource extends Resource
                             ->columnSpanFull()
                             ->label('訊息'),
                     ]),
-                Forms\Components\Section::make('SEO 設定')
-                    ->schema([
-                        Forms\Components\TextInput::make('meta_title')
-                            ->maxLength(60)
-                            ->label('Meta 標題')
-                            ->helperText('建議長度：50-60 字元'),
-                        Forms\Components\Textarea::make('meta_description')
-                            ->maxLength(160)
-                            ->label('Meta 描述')
-                            ->helperText('建議長度：120-160 字元'),
-                        Forms\Components\FileUpload::make('meta_image')
-                            ->image()
-                            ->directory('meta-images')
-                            ->label('Meta 圖片')
-                            ->helperText('建議尺寸：1200x630 像素'),
-                    ]),
             ]);
     }
 
@@ -82,10 +66,6 @@ class ContactUsResource extends Resource
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable()
                     ->label('電話'),
-                Tables\Columns\TextColumn::make('meta_title')
-                    ->searchable()
-                    ->toggleable()
-                    ->label('Meta 標題'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

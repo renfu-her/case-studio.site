@@ -13,10 +13,7 @@ class ContactUs extends Model
         'name',
         'email',
         'phone',
-        'message',
-        'meta_title',
-        'meta_description',
-        'meta_image'
+        'message'
     ];
 
     protected $casts = [
