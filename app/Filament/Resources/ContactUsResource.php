@@ -29,27 +29,43 @@ class ContactUsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->label('姓名'),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255)
-                    ->label('電子郵件'),
-                Forms\Components\TextInput::make('phone')
-                    ->tel()
-                    ->maxLength(255)
-                    ->label('電話'),
-                Forms\Components\Textarea::make('message')
-                    ->required()
-                    ->maxLength(65535)
-                    ->columnSpanFull()
-                    ->label('訊息'),
-                Forms\Components\Toggle::make('is_read')
-                    ->label('已讀')
-                    ->default(false),
+                Forms\Components\Section::make('基本資訊')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('姓名'),
+                        Forms\Components\TextInput::make('email')
+                            ->email()
+                            ->required()
+                            ->maxLength(255)
+                            ->label('電子郵件'),
+                        Forms\Components\TextInput::make('phone')
+                            ->tel()
+                            ->maxLength(255)
+                            ->label('電話'),
+                        Forms\Components\Textarea::make('message')
+                            ->required()
+                            ->maxLength(65535)
+                            ->columnSpanFull()
+                            ->label('訊息'),
+                    ]),
+                Forms\Components\Section::make('SEO 設定')
+                    ->schema([
+                        Forms\Components\TextInput::make('meta_title')
+                            ->maxLength(60)
+                            ->label('Meta 標題')
+                            ->helperText('建議長度：50-60 字元'),
+                        Forms\Components\Textarea::make('meta_description')
+                            ->maxLength(160)
+                            ->label('Meta 描述')
+                            ->helperText('建議長度：120-160 字元'),
+                        Forms\Components\FileUpload::make('meta_image')
+                            ->image()
+                            ->directory('meta-images')
+                            ->label('Meta 圖片')
+                            ->helperText('建議尺寸：1200x630 像素'),
+                    ]),
             ]);
     }
 
@@ -66,8 +82,10 @@ class ContactUsResource extends Resource
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable()
                     ->label('電話'),
-                Tables\Columns\ToggleColumn::make('is_read')
-                    ->label('已讀'),
+                Tables\Columns\TextColumn::make('meta_title')
+                    ->searchable()
+                    ->toggleable()
+                    ->label('Meta 標題'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -75,8 +93,7 @@ class ContactUsResource extends Resource
                     ->label('建立時間'),
             ])
             ->filters([
-                Tables\Filters\TernaryFilter::make('is_read')
-                    ->label('已讀狀態'),
+                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

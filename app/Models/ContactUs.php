@@ -14,7 +14,9 @@ class ContactUs extends Model
         'email',
         'phone',
         'message',
-        'is_read'
+        'meta_title',
+        'meta_description',
+        'meta_image'
     ];
 
     protected $casts = [
