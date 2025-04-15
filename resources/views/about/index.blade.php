@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', $about->title)
+
+@section('description', $about->meta_description)
+
+@section('image', $about->meta_image)
+
 @section('content')
 <div class="container py-6">
     @if($about)
