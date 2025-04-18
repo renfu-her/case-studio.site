@@ -357,5 +357,11 @@
     <script src="{{ asset('assets/libraries/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/libraries/aos/aos.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    <script>
+        // 強制使用 light 模式
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+        });
+    </script>
 </body>
 </html> 
