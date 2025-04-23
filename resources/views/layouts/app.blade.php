@@ -262,6 +262,9 @@
                         <li class="nav-item mb-2">
                             <a href="{{ url('/contact') }}" class="nav-link p-0 text-white hover-underline">聯絡我們</a>
                         </li>
+                        <li class="nav-item mb-2">
+                            <a href="{{ url('/privacy') }}" class="nav-link p-0 text-white hover-underline">隱私權政策</a>
+                        </li>
                     </ul>
                 </div>
 
