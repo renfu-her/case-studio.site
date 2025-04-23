@@ -12,3 +12,6 @@ Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects
 Route::get('/about', [AboutUsController::class, 'index'])->name('about.index');
 Route::get('/contact', [ContactUsController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
+Route::get('/privacy', function () {
+    return view('privacy');
+})->name('privacy');
